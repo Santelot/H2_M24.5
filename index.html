@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+           if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                 document.getElementById('activity-2').style.display = 'none';
+                   document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+                  document.getElementById('activity-5').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M24.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparación para la práctica de la función de reserva y calificación.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a poner en práctica las funcionalidades de reserva y calificación que diseñamos en la última misión. ¡Prepárense para implementar el proceso de reservas en su app de alojamiento!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar, quiero saber cómo están. Si están listos para conectar funcionalidades, toquen sus orejas con las manos. Si necesitan un poco más de concentración, cierren los ojos y respiren profundamente cinco veces."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por estar aquí, listos para aprender y crear algo increíble. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos principales: 1. Implementar la funcionalidad de reserva de alojamientos. 2. Implementar la funcionalidad de calificaciones en su aplicación de hosting."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🧘 Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+         <div class="subtitle">Activar la concentración con una meditación flash.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Meditación Flash".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a relajarnos y a mejorar nuestra concentración con una meditación flash. Siéntense cómodamente, cierren los ojos y concéntrense en su respiración por un minuto. Inhalen profundamente y exhalen lentamente, manteniendo la calma y la quietud."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro - 1 Minuto".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Beneficios de la Meditación".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Muy bien, Genios. Esta meditación nos ayuda a calmar la mente, reducir el estrés y aumentar nuestro enfoque. Ahora estamos listos para implementar las funcionalidades de nuestra app."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Organizar equipos para trabajar en la implementación de las funcionalidades.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+             <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Reunión de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, por favor reúnanse con los mismos equipos que han estado trabajando. El trabajo en equipo les permitirá construir una aplicación más robusta.  Tienen un minuto para organizarse."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recoger Magic Tablets".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, elijan un representante de cada equipo para recoger las Magic Tablets. Asegúrense de tener todos los materiales listos para el reto. Tienen un minuto para esta actividad."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - 1 Minuto".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 39 minutos</div>
+        <div class="subtitle">Implementar las funcionalidades de reserva y calificación en Bubble.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+               <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 13 "Título del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de poner a prueba todo lo que diseñaron en la misión anterior. Hoy implementarán las funciones de reserva y calificación en su aplicación de alojamiento, haciendo que la interacción de los usuarios sea mucho más completa. ¡Prepárense para añadir elementos funcionales a sus apps!"</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 14 "Implementación de Reserva y Calificación".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "El reto de hoy consiste en implementar las funciones para reservar un alojamiento y para calificarlo. Primero, creen la página de reserva, incluyendo la lógica para calcular el precio total y para realizar un pago con Stripe. Luego implementen la función de calificación, añadiendo un input de texto para las opiniones de usuarios y una forma de mostrar las reseñas de otros usuarios. Recuerden que en la misión anterior hicieron el diseño de estas funcionalidades en papel, ahora es tiempo de llevarlo a la práctica en Bubble. ¡Tienen 30 minutos para crear estas funcionalidades en su aplicación de hosting!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (30 minutos):</strong> Proyectar Diapositiva 15 "Cronómetro - 30 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 16 "Intercambio de Resultados".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que han avanzado en la implementación de la reserva y calificaciones, reúnanse con el equipo más cercano para compartir sus resultados. Muestren cómo han implementado estas funcionalidades y qué desafíos han enfrentado. Compartir experiencias les ayudará a mejorar sus apps y a aprender nuevas maneras de resolver problemas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (5 minutos):</strong> Proyectar Diapositiva 17 "Cronómetro - 5 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+           </tr>
+            <tr>
+               <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 18 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Excelente trabajo, Genios. Hoy hemos implementado con éxito la función de reserva y calificaciones.  Han dado un paso más hacia una app de alojamiento funcional y lista para usar. ¡Felicidades por su dedicación y esfuerzo!"</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 19 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Hoy han demostrado su habilidad para convertir diseños en realidad. Su esfuerzo y dedicación en la implementación de reservas y calificaciones merece un reconocimiento especial. ¡You've Got Mon-e por su gran trabajo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🏅 Actividad 5: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cerrar la misión y organizar el espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 20 "Honor de Dojo".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hemos llegado al final de la sesión. Ahora es momento de honrar nuestro Dojo. Por favor, devuelvan sus Magic Tablets y asegúrense de que el espacio esté limpio y ordenado. ¡Gracias por su colaboración y respeto a nuestro lugar de trabajo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
